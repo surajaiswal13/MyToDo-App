@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block title %}
+
+    About Us Nothing-
+
+{% endblock title %}
+
+{% block body %}
+
+    <div class="container">
+        <br>
+        <h2>Contact Us</h2>
+        <div class="container">
+            <br>
+            <form action="contact_us" method="POST">
+                <div class="mb-3">
+                    <label for="email_us" class="form-label">Email address</label>
+                    <input type="email" class="form-control" name="email" id="email_us" placeholder="email@example.com" required="True">
+                    <div class="form-text">We'll never share your email with anyone else.</div>
+                </div>
+                <div class="mb-3">
+                    <label for="query_us" class="form-label">Query</label>
+                    <textarea class="form-control" name="query" id="query_us" placeholder="State Your Query Here" required="True"></textarea>
+                </div>
+                <div class="mb-3 form-check">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1" required="True">
+                    <label class="form-check-label" for="exampleCheck1">Accept our yerms and conditions</label>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+
+                <br>
+
+                {% with messages = get_flashed_messages() %}  
+                {% if messages %}  
+                      {% for message in messages %}  
+                      <div class="alert alert-primary" role="alert">
+                        {{ message }}
+                      </div>
+                      {% endfor %}  
+                {% endif %}  
+                {% endwith %}  
+
+
+        </div>
+    </div>    
+
+{% endblock body %}

@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Home - 
+{% endblock title %}
+
+{% block body %}
+    
+    
+    <div class="container my-5">
+        <h2 >Add a ToDo</h2>
+        <br>
+        <form action="/" method="POST">
+            <div class="mb-3">
+            <label for="title" class="form-label">Title</label>
+            <input type="text" class="form-control" id="title" name="title" >
+            </div>
+            <div class="mb-3">
+            <label for="desc" class="form-label">Description</label>
+            <input type="text" class="form-control" id="desc" name="desc">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+    {% if allTodo|length == 0 %}
+
+        <div class="container alert alert-primary" role="alert">
+            No Records Found , Please add some
+        </div>    
+        
+    {% else %}
+        
+        <div class="container my-5">
+            <h2>Your ToDo's</h2>
+            <br>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Sno</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Date & Time</th>
+                    <th scope="col">Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                    {% for todos in allTodo %}
+                    
+
+                        <tr>
+                            <th scope="row">{{ loop.index }}</th>
+                            <td>{{ todos.title }}</td>
+                            <td>{{ todos.description }}</td>
+                            <td>{{ todos.date_created }}</td>
+                            <td>
+                                <a href="/update/{{ todos.sno }}" type="button" class="btn btn-outline-info btn-sm mx-1">Update</a>
+                                <a href="/delete/{{ todos.sno }}" type="button" class="btn btn-outline-danger btn-sm mx-1">Delete</a>
+                            </td>
+                        </tr>
+                    
+                    {% endfor %}
+                </tbody>
+               
+            </table>
+        </div>
+
+    {% endif %}
+
+{% endblock body %}

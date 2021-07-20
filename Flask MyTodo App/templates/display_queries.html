@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}
+
+    All Queries - 
+    
+{% endblock title %}
+
+{% block body %}
+
+    <div class="container my-5">
+
+        <h2 class="text-center">User Queries</h2>
+        <br>
+
+        {% if allQueries %}
+
+            <table class="table">
+
+                <thead>
+                    <tr>
+                        <th scope="col">Query Id</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Query Description</th>
+                    </tr>
+                </thead>
+
+                {% for allQuery in allQueries %}
+
+                <tbody>
+
+                    <!-- <th scope="row">{{ loop.index }}</th> -->
+                    <th scope="row">{{ allQuery.query_no }}</th>
+                    <td>{{ allQuery.email }}</td>
+                    <td>{{ allQuery.query_description }}</td>
+
+                </tbody>
+                    
+                {% endfor %}
+
+            </table>
+            
+        {% endif %}
+
+    </div>
+    
+{% endblock body %}
